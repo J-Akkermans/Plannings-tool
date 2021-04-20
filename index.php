@@ -1,5 +1,6 @@
 <?php 
-    
+        include 'resources/functionComponents/db_conn.php';
+        include 'resources/functionComponents/select.php';
 
 ?>
 

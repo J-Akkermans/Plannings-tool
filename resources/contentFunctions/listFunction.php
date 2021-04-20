@@ -1,5 +1,4 @@
 <?php 
-
     function showList(){
         $counter = 0;
         $divOpen = "<div class='row mb-2'>";
@@ -19,7 +18,7 @@
                             <a class="text-dark" href="#"><?= $info['name']?></a>
                         </h3>
                         <p class="card-text mb-auto textOverlap"><?= strip_tags($info['description'])?></p>
-                        <a href="gameDetail.php?id=<?=$info['id']?>&name=<?=$info['name']?>">Meer informatie!</a>
+                        <a href="gameDetail.php?id=<?=$info['id']?>">Meer informatie!</a>
                     </div>
                     <img class="card-img-right flex-auto d-none d-md-block"
                         alt="<?= $info['name']?>" style="width: 200px; height: 250px;"

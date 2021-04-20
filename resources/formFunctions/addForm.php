@@ -63,10 +63,9 @@ function insert($array){
     $players = implode(",", $players);
     $pdo = dbConn();
     $array[0] = date('Y-m-d H:i:s');
-    $sth = $pdo->prepare("INSERT INTO agenda (gameNaam, datum_tijd, Uitlegger, Spelers, gameID)
-    VALUES (:gamenaam, :date,:uitlegger,:spelers, :gameID)");
+    $sth = $pdo->prepare("INSERT INTO agenda (datum_tijd, Uitlegger, Spelers, gameID)
+    VALUES (:date,:uitlegger,:spelers, :gameID)");
     $sth->execute(array(
-        ':gamenaam' => $_GET['name'],
         ':date' => $array[0],
         ':uitlegger' => $array[1],
         ':spelers' => $players,

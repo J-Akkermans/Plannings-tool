@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
@@ -17,7 +18,7 @@
           <a class="nav-link" href="#">Afspraak maken!</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Agenda</a>
+          <a class="nav-link <?php if(countRow() == 0) echo "disabled"; ?>" href="Agenda.php">Agenda</a>
         </li>
       </ul>
     </div>
