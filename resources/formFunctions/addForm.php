@@ -1,5 +1,6 @@
 <?php 
 $scriptTest = "";
+$verified = false;
 function cleanData($data)
 {
     $data = trim($data);
@@ -24,6 +25,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if ((count(array_unique($check)) === 1) and in_array(false, $check) === true) {
         $scriptTest = "";
         insert($array);
+        $verified = true;
     }else{
         $scriptTest = 
             "<script> 
@@ -62,7 +64,6 @@ function insert($array){
     $players = explode(",", $array[2]);
     $players = implode(",", $players);
     $pdo = dbConn();
-    $array[0] = date('Y-m-d H:i:s');
     $sth = $pdo->prepare("INSERT INTO agenda (datum_tijd, Uitlegger, Spelers, gameID)
     VALUES (:date,:uitlegger,:spelers, :gameID)");
     $sth->execute(array(

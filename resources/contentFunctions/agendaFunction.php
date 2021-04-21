@@ -5,7 +5,7 @@ foreach (getAgendaData() as $info){
     $splitMonth = explode("-",$dateTime[0]);
     $monthName = date('M', mktime(0, 0, 0, $splitMonth[1], 10));
     ?>
-<div class="row d-flex justify-content-center my-2">
+<div class="row d-flex justify-content-center my-2  p-0">
     <div class="col-lg-2  bg-primary">
         <div class="d-flex flex-column align-items-center justify-content-center">
             <span class="display-2 text-white"><?=$splitMonth[2]; ?> </span>
@@ -26,7 +26,7 @@ foreach (getAgendaData() as $info){
             <img class="d-none d-lg-block d-block my-auto" alt="<?= $info['name']?>"
                 src="resources/dbImg/<?=$info['image']; ?>" style="height: 100px;">
             <div class="d-flex justify-content-between w-50 mt-3">
-                <a href=""><i class="text-primary fas fa-edit display-7"></i></a>
+                <a href="edit.php?id=<?=$info['id']?>"><i class="text-primary fas fa-edit display-7"></i></a>
                 <a href=""><i class="text-primary fas fa-info-circle display-7"></i></a>
                 <form method="post">
                     <input type="hidden" name="inputVeld"value="<?=$info['id']?>">

@@ -23,11 +23,16 @@
 <body class="bg-main">
     <?php include('resources/pageComponents/nav.php')?>
     <div class="container my-4">
+        <?php if($verified){ ?>
+        <div class="alert alert-success" role="alert">
+            Toegevoegd aan de agenda!
+        </div>
+        <?php }?>
         <div class="card mb-3 shadow">
             <div class="card-header d-flex justify-content-between">
                 <h1><?=$data['name']?></h1>
-                 <button type="button" id="afspraakKnop" class="btn btn-success">Maak afspraak!</button>
-                 <button type="button" id="cancelKnop" class="btn btn-danger d-none">Annuleer</button>
+                <button type="button" id="afspraakKnop" class="btn btn-success">Maak afspraak!</button>
+                <button type="button" id="cancelKnop" class="btn btn-danger d-none">Annuleer</button>
             </div>
             <div class="d-flex my-2 justify-content-center">
                 <?php include('resources/pageComponents/addMeeting.php')?>
@@ -88,7 +93,7 @@
     </script>
     <?=$scriptTest ?>
     <script>
-   $(document).ready(function() {
+    $(document).ready(function() {
         $("#afspraakKnop").click(function() {
             if (!$("#contentDiv").hasClass("d-none")) {
                 $("#contentDiv,#afspraakKnop").addClass("d-none");
@@ -101,7 +106,7 @@
                 $("#formDiv, #cancelKnop").addClass("d-none");
             }
         });
-        
+
     });
     </script>
 </body>

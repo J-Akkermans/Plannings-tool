@@ -22,6 +22,7 @@
 <body class="bg-main">
     <?php include('resources/pageComponents/nav.php')?>
     <div class="container my-4">
+
         <?php showList();?>
     </div> 
     <?php include('resources/pageComponents/footer.php')?>
