@@ -23,41 +23,54 @@
     <?php include('resources/pageComponents/nav.php')?>
 
 
-    <div class="container">
+    <?php if($verified){ ?>
+    <div class="alert alert-success" role="alert">
+        Agenda is geupdate! :)
+    </div>
+    <?php }?>
+    <?php if(!$verified){ ?>
+        <div class="alert alert-danger" role="alert">
+  Het is niet gelukt! :( Probeer het opnieuw!
+</div>
+    <?php }?>
     <div class="row justify-content-center">
         <div class="col-lg-8 bg-white shadow m-5 p-3">
             <form method="post">
-            <div class="form-group row mb-2">
+                <div class="form-group row mb-2">
                     <label class="col-sm-2 col-form-label">Gamenaam</label>
                     <div class="col-sm-10">
-                    <input class="form-control" type="text" placeholder="<?=$info['GameNaam'] ?>" readonly>
+                        <input class="form-control" type="text" placeholder="<?=$info['GameNaam'] ?>" readonly>
                     </div>
                 </div>
                 <div class="form-group row mb-2">
                     <label class="col-sm-2 col-form-label">Datum & Tijd</label>
                     <div class="col-sm-10">
-                        <input name="updateInfo[]" type="datetime-local" class="form-control" value="<?php echo date('Y-m-d\TH:i:s', strtotime($info['datum_tijd'])) ?>">
+                        <input name="updateInfo[]" type="datetime-local" class="form-control"
+                            value="<?php echo date('Y-m-d\TH:i:s', strtotime($info['datum_tijd'])) ?>">
+                        <span class="text-danger"><?= $error[0]?></span>
                     </div>
                 </div>
-            <div class="form-group row mb-2">
+                <div class="form-group row mb-2">
                     <label class="col-sm-2 col-form-label">Uitlegger</label>
                     <div class="col-sm-10">
                         <input name="updateInfo[]" type="text" class="form-control" value="<?= $info['Uitlegger']?>">
+                        <span class="text-danger"><?= $error[1]?></span>
                     </div>
                 </div>
                 <div class="form-group row mb-2">
                     <label class="col-sm-2 col-form-label">Spelers</label>
                     <div class="col-sm-10">
                         <input name="updateInfo[]" type="text" class="form-control" value="<?= $info['Spelers']?>">
+                        <span class="text-danger"><?= $error[2]?></span>
                     </div>
                 </div>
                 <div class="form-group row mb-2">
                     <label class="col-sm-2 col-form-label"></label>
                     <div class="col-sm-10">
-                    <button name="" type="submit" class="w-100 btn btn-primary">Update</button>
+                        <button name="" type="submit" class="w-100 btn btn-primary">Update</button>
                     </div>
                 </div>
-              
+
             </form>
         </div>
     </div>

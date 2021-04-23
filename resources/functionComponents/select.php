@@ -31,9 +31,17 @@
     }
     function singlegetAgendaData($id){
         $pbo = dbConn();
-        $sth = $pbo->prepare("SELECT agenda.*, gamelijst.name as GameNaam, gamelijst.image FROM gamelijst INNER JOIN agenda ON (agenda.Gameid=gamelijst.id) where agenda.id=:id");
+        $sth = $pbo->prepare("SELECT agenda.*, gamelijst.name as GameNaam, gamelijst.image FROM gamelijst INNER JOIN agenda ON (agenda.Gameid=gamelijst.id) where agenda.id=id");
         $sth->execute(array(':id'=> $id));
         $data = $sth->fetch(PDO::FETCH_ASSOC);
+        return $data;
+    }
+
+    function selectEndTime($id){
+        $pbo = dbConn();
+        $sth = $pbo->prepare("SELECT ADDTIME(agenda.datum_tijd, SEC_TO_TIME((gamelijst.explain_minutes + gamelijst.play_minutes) *60)) AS tijd FROM gamelijst INNER JOIN agenda ON (agenda.Gameid=gamelijst.id) where agenda.id=:id");
+        $sth->execute(array(':id'=> $id));
+        $data = $sth->fetch();
         return $data;
     }
 

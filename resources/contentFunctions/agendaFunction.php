@@ -4,6 +4,15 @@ foreach (getAgendaData() as $info){
     $dateTime = explode(" ",$info['datum_tijd']);
     $splitMonth = explode("-",$dateTime[0]);
     $monthName = date('M', mktime(0, 0, 0, $splitMonth[1], 10));
+
+    $endTime = selectEndTime($info['id']);
+    $formattedTime = new DateTime($endTime['tijd']);
+    $endTime = date_format($formattedTime, 'H:i');
+  
+
+
+
+
     ?>
 <div class="row d-flex justify-content-center my-2  p-0">
     <div class="col-lg-2  bg-primary">
@@ -16,7 +25,7 @@ foreach (getAgendaData() as $info){
         <div class="d-flex flex-column align-items-between justify-content-center h-100">
             <h4><?=$info['GameNaam'] ?></h4>
             <p class="text-muted mb-2"><span class="fw-bold">Tijd</span>
-                <?=DATE_FORMAT(new DateTime($dateTime[1]), 'H:i') ?></p>
+                <?=DATE_FORMAT(new DateTime($dateTime[1]), 'H:i') ?> <span class="fw-bold">Tot </span><?php   echo $endTime;?><span></span></p>
             <p class="text-muted mb-2"><span class="fw-bold">Uitlegger</span><?=$info['Uitlegger'] ?></p>
             <p class="text-muted mb-2"><span class="fw-bold">Spelers</span><?=$info['Spelers'] ?> </p>
         </div>

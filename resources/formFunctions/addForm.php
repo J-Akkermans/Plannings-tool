@@ -67,7 +67,7 @@ function insert($array){
     $sth = $pdo->prepare("INSERT INTO agenda (datum_tijd, Uitlegger, Spelers, gameID)
     VALUES (:date,:uitlegger,:spelers, :gameID)");
     $sth->execute(array(
-        ':date' => $array[0],
+        ':date' => date("Y-m-d H:i:s",strtotime($array[0])),
         ':uitlegger' => $array[1],
         ':spelers' => $players,
         'gameID' => $_GET['id']
