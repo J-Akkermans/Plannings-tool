@@ -1,6 +1,7 @@
 <?php 
 $scriptTest = "";
-$verified = '';
+
+
 function cleanData($data)
 {
     $data = trim($data);
@@ -35,7 +36,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
            ));;
            $verified = true;
     }else{
-        $verified = false;
+        $verified = "fail";
     }
     
     }

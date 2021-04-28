@@ -28,7 +28,7 @@
         Agenda is geupdate! :)
     </div>
     <?php }?>
-    <?php if(!$verified){ ?>
+    <?php if($verified == "fail"){ ?>
         <div class="alert alert-danger" role="alert">
   Het is niet gelukt! :( Probeer het opnieuw!
 </div>

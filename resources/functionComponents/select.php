@@ -31,7 +31,7 @@
     }
     function singlegetAgendaData($id){
         $pbo = dbConn();
-        $sth = $pbo->prepare("SELECT agenda.*, gamelijst.name as GameNaam, gamelijst.image FROM gamelijst INNER JOIN agenda ON (agenda.Gameid=gamelijst.id) where agenda.id=id");
+        $sth = $pbo->prepare("SELECT agenda.*, gamelijst.name as GameNaam, gamelijst.image FROM gamelijst INNER JOIN agenda ON (agenda.Gameid=gamelijst.id) where agenda.id=:id");
         $sth->execute(array(':id'=> $id));
         $data = $sth->fetch(PDO::FETCH_ASSOC);
         return $data;
